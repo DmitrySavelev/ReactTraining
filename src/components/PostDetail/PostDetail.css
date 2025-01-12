@@ -1,0 +1,39 @@
+.post {
+  background-color: rgb(252, 240, 240);
+  width: 75%;
+  margin: 0 auto;
+  padding: 1px 20px 20px;
+}
+
+.PostDetail_title {
+  text-align: center;
+}
+
+.badges {
+  display: flex;
+  gap: 20px;
+}
+
+img {
+  height: 15px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tag {
+  gap: 5px;
+}
+
+a {
+  display: inline-block; /* Обязательно для применения margin по вертикали */
+  text-decoration: none;
+  color: brown;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}

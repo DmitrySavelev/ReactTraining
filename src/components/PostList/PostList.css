@@ -1,0 +1,32 @@
+.PostList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tags button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tags button.active-tag {
+    background-color: #f02a2a;
+    color: white;
+    border-color: #0056b3;
+  }
+  
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }

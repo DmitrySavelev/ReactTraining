@@ -1,0 +1,6 @@
+.comments {
+  padding-top: 50px;
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+}
