@@ -19,7 +19,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .tags button.active-tag {
+  .tags button.activeTag {
     background-color: #f02a2a;
     color: white;
     border-color: #0056b3;

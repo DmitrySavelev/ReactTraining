@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
+import { getPostsApi } from "../../utils/Api";
 
 ChartJS.register(
   CategoryScale,
@@ -40,12 +41,11 @@ const options = {
 
 function AnalyticsPage() {
   const [posts, setPosts] = useState([]);
+  
   useEffect(() => {
-    fetch("https://dummyjson.com/posts")
-      .then((data) => data.json())
-      .then((data) => setPosts(data.posts))
-      .catch((error) => console.log(error));
+    getPostsApi().then((data) => setPosts(data.posts));
   }, []);
+
   const lineBarData = {
     labels: posts.map((data) => data.id), // Заголовки постов
     datasets: [

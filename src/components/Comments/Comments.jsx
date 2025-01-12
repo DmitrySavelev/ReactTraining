@@ -1,17 +1,19 @@
 import { useParams } from "react-router-dom";
 import c from "./Comments.module.css";
 import { useEffect, useState } from "react";
+import { getCommentsData } from "../../utils/Api";
 
 function Comments() {
   const { id } = useParams();
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/comments/${id}`) // Получаем данные комментария
-      .then((data) => data.json())
-      .then((data) => setComments(data))
-      .catch((error) => console.log(error));
+    getCommentsData(id).then((data) => {
+      setComments(data);
+    });
   }, [id]);
+
+  if (comments.length == 0) return <></>;
 
   return (
     <div className={c.comments}>

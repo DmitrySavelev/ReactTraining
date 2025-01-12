@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PostCard from "../PostCard/PostCard";
-import "./PostList.css";
+import l from "./PostList.module.css";
+import { getPostsApi } from "../../utils/Api";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -8,15 +9,12 @@ function PostList() {
   const [selectedTag, setSelectedTag] = useState(null);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/posts")
-      .then((data) => data.json())
-      .then((data) => {
-        setPosts(data.posts);
-        const allTags = data.posts.flatMap((post) => post.tags);
-        const uniqueTags = [...new Set(allTags)];
-        setTags(uniqueTags);
-      })
-      .catch((error) => console.log(error));
+    getPostsApi().then((data) => {
+      setPosts(data.posts);
+      const allTags = data.posts.flatMap((post) => post.tags);
+      const uniqueTags = [...new Set(allTags)];
+      setTags(uniqueTags);
+    });
   }, []);
 
   const filteredPosts = selectedTag
@@ -24,20 +22,20 @@ function PostList() {
     : posts;
 
   return (
-    <div className="PostList">
-      <div className="tags">
+    <div className={l.PostList}>
+      <div className={l.tags}>
         {tags.map((tag) => (
           <button
             key={tag}
             onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-            className={tag === selectedTag ? "active-tag" : ""}
+            className={tag === selectedTag ? l.activeTag : ""}
           >
             {tag}
           </button>
         ))}
       </div>
 
-      <div className="posts">
+      <div className={l.posts}>
         {filteredPosts.map((post) => (
           <PostCard
             title={post.title}

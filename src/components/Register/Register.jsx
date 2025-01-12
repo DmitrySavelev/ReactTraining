@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Register.css";
+import r from "./Register.module.css";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -28,7 +28,7 @@ function Register() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="popup">
+      <div className={r.popup}>
         <input type="text" required onChange={(e) => setName(e.target.value)} />
         <input
           type="password"
